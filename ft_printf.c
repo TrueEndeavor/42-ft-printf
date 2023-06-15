@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:03:58 by lannur-s          #+#    #+#             */
-/*   Updated: 2023/06/14 18:10:45 by lannur-s         ###   ########.fr       */
+/*   Updated: 2023/06/15 19:04:44 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,22 @@ static int	do_print(const char c, void *arg)
 	unsigned long	address;
 
 	if (c == 'c')
-		return (ft_putchar_fd(*(int *)&arg, STD_OUT), 1);
+		return (print_char(*(int *)&arg));
 	else if (c == 's')
-		return (ft_putstr_fd((char *)arg, STD_OUT), 1);
+		return (print_string((char *)arg));
 	else if (c == 'd' || c == 'i')
-		return (ft_putnbr_fd(*((int *)arg), STD_OUT), 1);
+		return (print_nbr(*((int *)&arg)));
 	else if (c == 'u')
-		return (ft_putunsignednbr_fd(*((unsigned int *)arg), STD_OUT), 1);
+		return (print_unsigned_nbr(*((unsigned int *)&arg)));
 	else if (c == 'x')
-		return (ft_putnbr_base_fd(*((int *)arg), STD_OUT, BASE_HEX, LOWER), 1);
+		return (print_hexa(*((unsigned int *)&arg, BASE_HEX, LOWER));
 	else if (c == 'X')
-		return (ft_putnbr_base_fd(*((int *)arg), STD_OUT, BASE_HEX, UPPER), 1);
+		return (print_hexa(*((unsigned int *)&arg, BASE_HEX, UPPER));
 	else if (c == 'p')
 	{
-		address = (unsigned long)arg;
+		address = (unsigned long)(*(int *)&arg);
 		add_leading_zeros(address);
-		return (ft_putnbr_base_fd((unsigned long)arg, STD_OUT, BASE_HEX, UPPER), 1);
+		return (print_hexa(address, BASE_HEX, UPPER), 1);
 	}
 	else if (c == '%')
 		return (ft_putchar_fd('%', STD_OUT), 1);

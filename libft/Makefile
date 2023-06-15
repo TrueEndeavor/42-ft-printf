@@ -6,7 +6,7 @@
 #    By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 12:46:34 by lannur-s          #+#    #+#              #
-#    Updated: 2023/06/14 16:18:41 by lannur-s         ###   ########.fr        #
+#    Updated: 2023/06/15 16:33:28 by lannur-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,6 @@ ARFLAGS = rcs
 # Mandatory source (.c) files
 SRCS = ft_strlen.c ft_strchr.c \
 	   ft_putchar_fd.c ft_putstr_fd.c \
-	   ft_putnbr_fd.c ft_putunsignednbr_fd.c \
-	   ft_putnbr_base_fd.c
 
 # Variable assignment with pattern substitution:
 # Generate a list of object files 

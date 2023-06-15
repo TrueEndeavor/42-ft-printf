@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:38:35 by lannur-s          #+#    #+#             */
-/*   Updated: 2023/06/14 18:13:30 by lannur-s         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:34:29 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s)
-		(write(1, "(null)", 6));
 	if (s)
 	{
 		write(fd, s, ft_strlen(s));

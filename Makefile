@@ -6,7 +6,7 @@
 #    By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 19:12:46 by lannur-s          #+#    #+#              #
-#    Updated: 2023/06/13 21:23:36 by lannur-s         ###   ########.fr        #
+#    Updated: 2023/06/15 15:55:03 by lannur-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ ARFLAGS = rcs
 
 LIBFDIR = ./libft
 
-SRC = ft_printf.c
+SRC = ft_printf.c print_char.c print_string.c print_nbr.c \
+		print_unsigned_nbr.c print_hexa.c
 
 OBJ = $(SRC:%.c=%.o)
 

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsignednbr_fd.c                             :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 20:43:46 by lannur-s          #+#    #+#             */
-/*   Updated: 2023/06/13 20:43:51 by lannur-s         ###   ########.fr       */
+/*   Created: 2023/06/15 11:00:31 by lannur-s          #+#    #+#             */
+/*   Updated: 2023/06/15 11:00:41 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putunsignednbr_fd(unsigned int n, int fd)
+int	print_string(char *s)
 {
-	long	nbr;
-
-	nbr = n;
-	if (nbr >= 10)
-		ft_putnbr_fd(nbr / 10, fd);
-	ft_putchar_fd(nbr % 10 + '0', fd);
+	if (!s)
+	{
+		ft_putstr_fd("(null)", STD_OUT);
+		return (6);
+	}
+	else
+	{
+		ft_putstr_fd(s, STD_OUT);
+		return ((int)ft_strlen(s));
+	}
 }

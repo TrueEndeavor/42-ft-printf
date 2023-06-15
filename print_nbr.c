@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   print_nbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 13:00:37 by lannur-s          #+#    #+#             */
-/*   Updated: 2023/06/13 18:52:27 by lannur-s         ###   ########.fr       */
+/*   Created: 2023/06/15 13:58:04 by lannur-s          #+#    #+#             */
+/*   Updated: 2023/06/15 19:03:10 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	print_nbr(int n)
 {
 	long	nbr;
+	int		len;
 
 	nbr = n;
+	len = 0;
 	if (nbr < 0)
 	{
-		ft_putchar_fd('-', fd);
+		ft_putchar_fd('-', STD_OUT);
 		nbr = -nbr;
+		len++;
 	}
 	if (nbr >= 10)
-		ft_putnbr_fd(nbr / 10, fd);
-	ft_putchar_fd(nbr % 10 + '0', fd);
+		len += print_nbr(nbr / 10);
+	ft_putchar_fd(nbr % 10 + '0', STD_OUT);
+	len++;
+	return (len);
 }
+
