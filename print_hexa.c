@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:34:57 by lannur-s          #+#    #+#             */
-/*   Updated: 2023/06/15 19:05:09 by lannur-s         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:46:48 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@ int	print_hexa(unsigned int nbr, int base, int uppercase)
 	int				length;
 
 	length = 0;
-	if (nbr < 0)
-	{
-		ft_putchar_fd('-', STD_OUT);
-		nbr = -nbr;
-		length++;
-	}
 	if (nbr >= (unsigned int) base)
 		length += print_hexa(nbr / base, base, uppercase);
 

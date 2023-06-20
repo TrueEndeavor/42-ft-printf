@@ -6,59 +6,38 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:03:58 by lannur-s          #+#    #+#             */
-/*   Updated: 2023/06/15 19:04:44 by lannur-s         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:45:50 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_num_digits(unsigned long address, int base)
+static int	print_p(unsigned long adr)
 {
-	int	num_digits;
-
-	num_digits = 0;
-	while ((int)address >= base)
+	if (adr)
 	{
-		address /= base;
-		num_digits++;
+		print_string("0x");
+		return (print_pointer(adr, BASE_HEX, LOWER) + 2);
 	}
-	return (num_digits);
+	return (print_string(NIL_STRING));
 }
 
-static void	add_leading_zeros(unsigned long address)
+static int	do_print(const char c, va_list args)
 {
-	int	leading_zeros;
-
-	leading_zeros = sizeof(address) * 2 - get_num_digits(address, BASE_HEX);
-	while (leading_zeros > 0)
-	{
-		ft_putchar_fd('0', STD_OUT);
-		leading_zeros--;
-	}
-}
-
-static int	do_print(const char c, void *arg)
-{
-	unsigned long	address;
-
 	if (c == 'c')
-		return (print_char(*(int *)&arg));
+		return (print_char(va_arg(args, int)));
 	else if (c == 's')
-		return (print_string((char *)arg));
+		return (print_string(va_arg(args, char *)));
 	else if (c == 'd' || c == 'i')
-		return (print_nbr(*((int *)&arg)));
+		return (print_nbr(va_arg(args, int)));
 	else if (c == 'u')
-		return (print_unsigned_nbr(*((unsigned int *)&arg)));
+		return (print_unsigned_nbr(va_arg(args, unsigned int)));
 	else if (c == 'x')
-		return (print_hexa(*((unsigned int *)&arg, BASE_HEX, LOWER));
+		return (print_hexa(va_arg(args, unsigned int), BASE_HEX, LOWER));
 	else if (c == 'X')
-		return (print_hexa(*((unsigned int *)&arg, BASE_HEX, UPPER));
+		return (print_hexa(va_arg(args, unsigned int), BASE_HEX, UPPER));
 	else if (c == 'p')
-	{
-		address = (unsigned long)(*(int *)&arg);
-		add_leading_zeros(address);
-		return (print_hexa(address, BASE_HEX, UPPER), 1);
-	}
+		return (print_p(va_arg(args, unsigned long)));
 	else if (c == '%')
 		return (ft_putchar_fd('%', STD_OUT), 1);
 	else
@@ -68,7 +47,6 @@ static int	do_print(const char c, void *arg)
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	void	*v;
 	int		length;
 
 	length = 0;
@@ -78,8 +56,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%' && ft_strchr("csdiuxXp%", *(format + 1)) != 0)
 		{
 			format++;
-			v = va_arg(args, void *);
-			length += do_print(*format, v);
+			length += do_print(*format, args);
 		}
 		else
 		{

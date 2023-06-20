@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:00:31 by lannur-s          #+#    #+#             */
-/*   Updated: 2023/06/15 11:00:41 by lannur-s         ###   ########.fr       */
+/*   Updated: 2023/06/20 10:20:56 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	print_string(char *s)
 {
 	if (!s)
 	{
-		ft_putstr_fd("(null)", STD_OUT);
+		ft_putstr_fd(NULL_STRING, STD_OUT);
 		return (6);
 	}
 	else
