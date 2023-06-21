@@ -6,7 +6,7 @@
 #    By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 19:12:46 by lannur-s          #+#    #+#              #
-#    Updated: 2023/06/21 17:07:27 by lannur-s         ###   ########.fr        #
+#    Updated: 2023/06/21 17:10:06 by lannur-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,4 +50,4 @@ fclean: clean
 	
 re: fclean all
 
-.PHONY: all clean fclean libft.a 
+.PHONY: all clean fclean
