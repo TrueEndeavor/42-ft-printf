@@ -6,7 +6,7 @@
 #    By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 19:12:46 by lannur-s          #+#    #+#              #
-#    Updated: 2023/06/21 15:28:40 by lannur-s         ###   ########.fr        #
+#    Updated: 2023/06/21 17:07:27 by lannur-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,12 @@ SRCS =	ft_printf.c \
 OBJS = $(SRCS:%.c=%.o)
 
 $(NAME): $(OBJS) $(LIBFDIR)/$(LIBFTNAME)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(LIBFDIR)/$(LIBFTNAME)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 $(LIBFDIR)/$(LIBFTNAME):
 	make -C $(LIBFDIR)
+	cp $(LIBFDIR)/$(LIBFTNAME) $(LIBFTNAME)
+	mv $(LIBFTNAME) $(NAME)	
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -48,4 +50,4 @@ fclean: clean
 	
 re: fclean all
 
-.PHONY: all clean fclean makelibft 
+.PHONY: all clean fclean libft.a 
