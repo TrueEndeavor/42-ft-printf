@@ -6,7 +6,7 @@
 #    By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 19:12:46 by lannur-s          #+#    #+#              #
-#    Updated: 2023/06/21 17:10:06 by lannur-s         ###   ########.fr        #
+#    Updated: 2023/06/22 12:09:06 by lannur-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ ARFLAGS = rcs
 
 LIBFDIR = ./libft
 
+HEADERS = ft_printf.h
+
 SRCS =	ft_printf.c \
 		print_char.c print_string.c \
 		print_nbr_signed.c print_nbr_base.c 
@@ -32,10 +34,9 @@ $(NAME): $(OBJS) $(LIBFDIR)/$(LIBFTNAME)
 
 $(LIBFDIR)/$(LIBFTNAME):
 	make -C $(LIBFDIR)
-	cp $(LIBFDIR)/$(LIBFTNAME) $(LIBFTNAME)
-	mv $(LIBFTNAME) $(NAME)	
+	cp $(LIBFDIR)/$(LIBFTNAME) $(NAME)
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
@@ -50,4 +51,4 @@ fclean: clean
 	
 re: fclean all
 
-.PHONY: all clean fclean
+.PHONY: all clean fclean re

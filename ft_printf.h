@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:04:15 by lannur-s          #+#    #+#             */
-/*   Updated: 2023/06/21 12:05:42 by lannur-s         ###   ########.fr       */
+/*   Updated: 2023/06/22 12:09:54 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stddef.h> 
-# include <stdio.h>
 # include <limits.h>
 # include "./libft/libft.h"
 
