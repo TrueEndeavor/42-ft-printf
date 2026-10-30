@@ -6,20 +6,20 @@
 #    By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 19:12:46 by lannur-s          #+#    #+#              #
-#    Updated: 2023/08/01 16:00:08 by lannur-s         ###   ########.fr        #
+#    Updated: 2023/06/22 12:09:06 by lannur-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 LIBFTNAME = libft.a
 
-LIBFTDIR = ./libft
-
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I $(LIBFTDIR)
+CFLAGS = -Wall -Werror -Wextra
 
 AR = ar
 ARFLAGS = rcs
+
+LIBFDIR = ./libft
 
 HEADERS = ft_printf.h
 
@@ -29,12 +29,12 @@ SRCS =	ft_printf.c \
 
 OBJS = $(SRCS:%.c=%.o)
 
-$(NAME): $(OBJS) $(LIBFTDIR)/$(LIBFTNAME)
+$(NAME): $(OBJS) $(LIBFDIR)/$(LIBFTNAME)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-$(LIBFTDIR)/$(LIBFTNAME):
-	make -C $(LIBFTDIR)
-	cp $(LIBFTDIR)/$(LIBFTNAME) $(NAME)
+$(LIBFDIR)/$(LIBFTNAME):
+	make -C $(LIBFDIR)
+	cp $(LIBFDIR)/$(LIBFTNAME) $(NAME)
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -43,13 +43,12 @@ all: $(NAME)
 
 clean:
 	rm -f $(OBJS)
-	cd $(LIBFTDIR) && make clean
+	cd $(LIBFDIR) && make clean
 
 fclean: clean
 	rm -f $(NAME)
-	cd $(LIBFTDIR) && make fclean
+	cd $(LIBFDIR) && make fclean
 	
-re: fclean 
-	make
+re: fclean all
 
 .PHONY: all clean fclean re
